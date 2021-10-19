@@ -26,3 +26,12 @@ app.use(express.static('website'));
 app.listen(port, () => {
   console.log('Example app listening at http://localhost:${port}');
 });
+
+
+// GET method route
+app.get('/data', function (req, res) {
+  res.send(projectData)
+});
+
+
+const apiKey = "52ba739705f7335ceb995c4989ccf1bc";
