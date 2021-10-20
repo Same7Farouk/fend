@@ -24,14 +24,23 @@ app.use(express.static('website'));
 
 // Setup Server
 app.listen(port, () => {
-  console.log('Example app listening at http://localhost:${port}');
+  console.log('Example app listening at http://localhost:' + port);
 });
 
 
-// GET method route
+// GET data method route
 app.get('/data', function (req, res) {
-  res.send(projectData)
+  console.log('the response will send all data: '+ JSON.stringify(projectData));
+  res.send(projectData);
 });
 
+// POST method route
+app.post('/', function (req, res) {
 
-const apiKey = "52ba739705f7335ceb995c4989ccf1bc";
+  projectData['temperature'] = req.body.temperature;
+  projectData['date'] = req.body.date;
+  projectData['user_response'] = req.body.user_response;
+
+  console.log('app has stored the data: '+ JSON.stringify(projectData));
+  res.send();
+})
